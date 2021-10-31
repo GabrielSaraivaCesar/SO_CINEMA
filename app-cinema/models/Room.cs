@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace app_cinema
 {
     class Room
     {   
-        private String[] seatLetters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         private Person[,][] seats;
         private String[] sessions;
 
+        private String[] seatLetters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         private String resolution = "";
 
 
@@ -123,6 +124,39 @@ namespace app_cinema
             {
                 return null;
             }
+        }
+
+
+        public int availableSeatsAmount(String sessionHour)
+        {
+            int amount = 0;
+            foreach (Person[] row in this.seats)
+            {
+
+                if (row == null)
+                {
+                    amount++;
+                    continue;
+                }
+
+                bool someoneAlreadyOnSeat = false;
+                foreach (Person person in row)
+                {
+                    if (person != null)
+                    {
+                        if (person.SessionHour == sessionHour)
+                        {
+                            someoneAlreadyOnSeat = true;
+                        }
+                    } 
+                }
+                if (!someoneAlreadyOnSeat)
+                {
+                    amount++;
+                }
+            }
+
+            return amount;
         }
 
 

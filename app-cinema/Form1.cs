@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace app_cinema
 {
@@ -164,8 +164,10 @@ namespace app_cinema
             this.logs = "";
             this.room.Seats = new Person[this.room.Seats.GetLength(0), this.room.Seats.GetLength(1)][];
             status_label.Text = "Simulando..."; // Sort de prioridades
-            executeBuyRequests(this.peopleStack);
-            status_label.Text = "";
+
+            Thread simulationThread = new Thread(new ThreadStart(() => executeBuyRequests(this.peopleStack)));
+            simulationThread.Name = "Simulation thread";
+            simulationThread.Start();
         }
 
 
@@ -182,6 +184,17 @@ namespace app_cinema
             for (int i = 0; i < people.Length; i++)
             {
                 Person nextPerson = Person.getNextInPriority(people, PriorityComparerEnum.TIME_AND_PRIORITY);
+                if (nextPerson.CustomerType == CustomerTypeEnum.MEIA_ENTRADA)
+                {
+                    // Verificacao para ver se ele realmente tem a prioridade
+                    int availableSeatsAmout = this.room.availableSeatsAmount(nextPerson.SessionHour);
+                    double pers = ((Convert.ToDouble(availableSeatsAmout) / Convert.ToDouble(this.room.Seats.Length) - 1.0) * -1);
+                    if (pers > 0.4)
+                    {
+                        nextPerson = Person.getNextInPriority(people, PriorityComparerEnum.TIME_AND_PRIORITY_WITHOUT_ME); // Pegar proxima pessoa sem vantagem de meia entrada
+                    }
+                } 
+
                 String nextAvailableSeat = this.room.getNextSeat(nextPerson.SessionHour);
                 if (nextAvailableSeat == null)
                 {
@@ -239,8 +252,13 @@ namespace app_cinema
             diagnosticsWatch.Stop();
             var runTime = diagnosticsWatch.ElapsedMilliseconds;
 
-            logs_textbox.Text = this.logs;
-            label_runtime.Text = runTime.ToString() + "ms";
+            MethodInvoker inv = delegate
+            {
+                this.label_runtime.Text = runTime.ToString() + "ms";
+                this.logs_textbox.Text = this.logs;
+                this.status_label.Text = "";
+            };
+            this.Invoke(inv);
         }
 
 
