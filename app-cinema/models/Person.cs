@@ -37,6 +37,7 @@ namespace app_cinema
         private IfSeatUnavailableEnum ifSeatIsUnavailable;
         private CustomerTypeEnum customerType;
         private int actionTime;
+        private int timeToNextClient;
         private String name;
 
         public string Name { get => name; set => name = value; }
@@ -46,6 +47,7 @@ namespace app_cinema
         public IfSeatUnavailableEnum IfSeatIsUnavailable { get => ifSeatIsUnavailable; set => ifSeatIsUnavailable = value; }
         public CustomerTypeEnum CustomerType { get => customerType; set => customerType = value; }
         public int ActionTime { get => actionTime; set => actionTime = value; }
+        public int TimeToNextClient { get => timeToNextClient; set => timeToNextClient = value; }
 
         public Person()
         {
@@ -60,6 +62,7 @@ namespace app_cinema
             for (int i = 0; i < _people.Length; i++)
             {
                 people[i] = _people[i];
+                people[i].TimeToNextClient = _people[i].TimeToNextClient;
             }
 
             people = Array.FindAll(people, p => p.actionTime > 0);
@@ -146,6 +149,7 @@ namespace app_cinema
             theClone.IfSeatIsUnavailable = this.ifSeatIsUnavailable;
             theClone.CustomerType = this.customerType;
             theClone.ActionTime = this.actionTime;
+            theClone.TimeToNextClient = this.timeToNextClient;
             theClone.Name = this.name;
             return theClone;
         }

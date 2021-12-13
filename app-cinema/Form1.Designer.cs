@@ -53,8 +53,17 @@ namespace app_cinema
             this.label_runtime = new System.Windows.Forms.Label();
             this.btn_extrair = new System.Windows.Forms.Button();
             this.saveLogsDialog = new System.Windows.Forms.SaveFileDialog();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtInterpretador = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // salaFileDialog
@@ -64,7 +73,7 @@ namespace app_cinema
             // label_arquivo_sala
             // 
             this.label_arquivo_sala.AutoSize = true;
-            this.label_arquivo_sala.Location = new System.Drawing.Point(152, 63);
+            this.label_arquivo_sala.Location = new System.Drawing.Point(149, 50);
             this.label_arquivo_sala.Name = "label_arquivo_sala";
             this.label_arquivo_sala.Size = new System.Drawing.Size(145, 13);
             this.label_arquivo_sala.TabIndex = 2;
@@ -72,7 +81,7 @@ namespace app_cinema
             // 
             // button_config_sala
             // 
-            this.button_config_sala.Location = new System.Drawing.Point(12, 58);
+            this.button_config_sala.Location = new System.Drawing.Point(10, 45);
             this.button_config_sala.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.button_config_sala.Name = "button_config_sala";
             this.button_config_sala.Size = new System.Drawing.Size(134, 23);
@@ -85,7 +94,7 @@ namespace app_cinema
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 26);
+            this.label1.Location = new System.Drawing.Point(6, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(188, 20);
             this.label1.TabIndex = 0;
@@ -94,7 +103,7 @@ namespace app_cinema
             // label_arquivo_compra_ingressos
             // 
             this.label_arquivo_compra_ingressos.AutoSize = true;
-            this.label_arquivo_compra_ingressos.Location = new System.Drawing.Point(156, 145);
+            this.label_arquivo_compra_ingressos.Location = new System.Drawing.Point(150, 129);
             this.label_arquivo_compra_ingressos.Name = "label_arquivo_compra_ingressos";
             this.label_arquivo_compra_ingressos.Size = new System.Drawing.Size(145, 13);
             this.label_arquivo_compra_ingressos.TabIndex = 5;
@@ -102,7 +111,7 @@ namespace app_cinema
             // 
             // button_compras
             // 
-            this.button_compras.Location = new System.Drawing.Point(16, 140);
+            this.button_compras.Location = new System.Drawing.Point(10, 124);
             this.button_compras.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.button_compras.Name = "button_compras";
             this.button_compras.Size = new System.Drawing.Size(134, 23);
@@ -114,9 +123,9 @@ namespace app_cinema
             // btn_simular
             // 
             this.btn_simular.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.btn_simular.Location = new System.Drawing.Point(16, 206);
+            this.btn_simular.Location = new System.Drawing.Point(10, 193);
             this.btn_simular.Name = "btn_simular";
-            this.btn_simular.Size = new System.Drawing.Size(311, 48);
+            this.btn_simular.Size = new System.Drawing.Size(314, 48);
             this.btn_simular.TabIndex = 6;
             this.btn_simular.Text = "Simular";
             this.btn_simular.UseVisualStyleBackColor = true;
@@ -136,7 +145,7 @@ namespace app_cinema
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.status_label});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 501);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 600);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(900, 22);
             this.statusStrip1.TabIndex = 8;
@@ -151,7 +160,7 @@ namespace app_cinema
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 108);
+            this.label3.Location = new System.Drawing.Point(6, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(205, 20);
             this.label3.TabIndex = 9;
@@ -167,9 +176,9 @@ namespace app_cinema
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label_info_dimensoes);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(333, 26);
+            this.groupBox1.Location = new System.Drawing.Point(330, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 228);
+            this.groupBox1.Size = new System.Drawing.Size(532, 228);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacoes da sala";
@@ -182,7 +191,7 @@ namespace app_cinema
             this.compras_log.Location = new System.Drawing.Point(9, 125);
             this.compras_log.Name = "compras_log";
             this.compras_log.ReadOnly = true;
-            this.compras_log.Size = new System.Drawing.Size(540, 93);
+            this.compras_log.Size = new System.Drawing.Size(517, 93);
             this.compras_log.TabIndex = 11;
             this.compras_log.Text = "";
             // 
@@ -238,10 +247,10 @@ namespace app_cinema
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.logs_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.logs_textbox.Location = new System.Drawing.Point(16, 285);
+            this.logs_textbox.Location = new System.Drawing.Point(10, 261);
             this.logs_textbox.Name = "logs_textbox";
             this.logs_textbox.ReadOnly = true;
-            this.logs_textbox.Size = new System.Drawing.Size(866, 189);
+            this.logs_textbox.Size = new System.Drawing.Size(852, 289);
             this.logs_textbox.TabIndex = 12;
             this.logs_textbox.Text = "";
             // 
@@ -249,7 +258,7 @@ namespace app_cinema
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 267);
+            this.label4.Location = new System.Drawing.Point(6, 243);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 15);
@@ -261,7 +270,7 @@ namespace app_cinema
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 477);
+            this.label7.Location = new System.Drawing.Point(12, 981);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(126, 13);
             this.label7.TabIndex = 14;
@@ -271,7 +280,7 @@ namespace app_cinema
             // 
             this.label_runtime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label_runtime.AutoSize = true;
-            this.label_runtime.Location = new System.Drawing.Point(145, 477);
+            this.label_runtime.Location = new System.Drawing.Point(144, 981);
             this.label_runtime.Name = "label_runtime";
             this.label_runtime.Size = new System.Drawing.Size(26, 13);
             this.label_runtime.TabIndex = 15;
@@ -280,7 +289,7 @@ namespace app_cinema
             // btn_extrair
             // 
             this.btn_extrair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_extrair.Location = new System.Drawing.Point(786, 287);
+            this.btn_extrair.Location = new System.Drawing.Point(768, 261);
             this.btn_extrair.Name = "btn_extrair";
             this.btn_extrair.Size = new System.Drawing.Size(94, 29);
             this.btn_extrair.TabIndex = 16;
@@ -288,31 +297,103 @@ namespace app_cinema
             this.btn_extrair.UseVisualStyleBackColor = true;
             this.btn_extrair.Click += new System.EventHandler(this.btn_extrair_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(876, 585);
+            this.tabControl1.TabIndex = 17;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.btn_extrair);
+            this.tabPage1.Controls.Add(this.label_arquivo_sala);
+            this.tabPage1.Controls.Add(this.label_runtime);
+            this.tabPage1.Controls.Add(this.button_config_sala);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.button_compras);
+            this.tabPage1.Controls.Add(this.logs_textbox);
+            this.tabPage1.Controls.Add(this.label_arquivo_compra_ingressos);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.btn_simular);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(868, 559);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "UI Interativa";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.txtInterpretador);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(868, 559);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Interpretador";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtInterpretador
+            // 
+            this.txtInterpretador.BackColor = System.Drawing.SystemColors.MenuText;
+            this.txtInterpretador.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtInterpretador.ForeColor = System.Drawing.Color.Lime;
+            this.txtInterpretador.Location = new System.Drawing.Point(6, 527);
+            this.txtInterpretador.Name = "txtInterpretador";
+            this.txtInterpretador.Size = new System.Drawing.Size(775, 26);
+            this.txtInterpretador.TabIndex = 0;
+            this.txtInterpretador.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.MenuText;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.Lime;
+            this.richTextBox1.Location = new System.Drawing.Point(6, 6);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(856, 521);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(787, 527);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 26);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Enter";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 523);
-            this.Controls.Add(this.btn_extrair);
-            this.Controls.Add(this.label_runtime);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.logs_textbox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(900, 622);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.btn_simular);
-            this.Controls.Add(this.label_arquivo_compra_ingressos);
-            this.Controls.Add(this.button_compras);
-            this.Controls.Add(this.button_config_sala);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label_arquivo_sala);
             this.Name = "Form1";
             this.Text = "Form1";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +425,12 @@ namespace app_cinema
         private System.Windows.Forms.Label label_runtime;
         private System.Windows.Forms.Button btn_extrair;
         private System.Windows.Forms.SaveFileDialog saveLogsDialog;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox txtInterpretador;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
