@@ -413,7 +413,6 @@ namespace app_cinema
 
         private void ExecutarComando()
         {
-            DateTime now = DateTime.Now;
             String value = this.txtInterpretador.Text;
             this.txtInterpretador.Text = "";
             InterpreterLog(value);
